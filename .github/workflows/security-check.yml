@@ -1,0 +1,24 @@
+name: Security & Privacy Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-repo-hygiene:
+    name: Check for Private Keys & Plaintext Emails
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run security and email check
+        run: |
+          chmod +x scripts/security-check.sh
+          ./scripts/security-check.sh
