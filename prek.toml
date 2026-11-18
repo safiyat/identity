@@ -1,0 +1,18 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "detect-private-key" },
+  { id = "check-added-large-files" },
+  { id = "end-of-file-fixer" },
+  { id = "trailing-whitespace" },
+]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "custom-security-check"
+name = "Block private keys and plaintext emails"
+entry = "scripts/security-check.sh"
+language = "script"
+pass_filenames = false

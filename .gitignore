@@ -1,0 +1,38 @@
+# Ignore everything by default to prevent accidental private key leaks
+*
+
+# Allow repository metadata, directories, and helper scripts
+!.gitignore
+!LICENSE
+!README.md
+!VERIFY_PDF.md
+!*/
+!scripts/*.sh
+
+# Allow OpenSSH and PGP public keys, certificates, and trust files
+!*.pub
+!*-cert.pub
+!*.asc
+!allowed_signers
+!authorized_keys
+!revoked_keys
+!*.krl
+
+# Explicitly block common private key patterns as a secondary safeguard
+id_rsa
+id_ed25519
+id_ecdsa
+id_dsa
+*_ca
+*.pem
+*.key
+*.p12
+*.pfx
+*private*.asc
+!*.crt
+allowed_signers
+
+# Allow repository metadata
+!prek.toml
+!.github/
+!.github/**
